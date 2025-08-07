@@ -1,2 +1,5 @@
 /encrypted-text.txt
 /dictionary.txt
+.idea/
+.venv/
+
