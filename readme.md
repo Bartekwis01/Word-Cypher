@@ -1,0 +1,2 @@
+This is a simple tool that allows you to cypher and decypher an (almost) unlimited length of text. It works by switching out one word for another and storing the dictionary in another file. For example: "cat" can be encrypted into "dog" and "dog" can be then decrypted back into "cat" with the dictionary:
+"cat" --> "dog". This program is currently case-insensitive.
