@@ -1,5 +1,7 @@
-/encrypted-text.txt
+/coded-text.txt
 /dictionary.txt
+/decoded-text.txt
+/plaintext.txt
 .idea/
 .venv/
 
