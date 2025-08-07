@@ -37,6 +37,7 @@ else:
     input(f'Press Enter to acknowledge the warning and create a {DICTIONARY_PATH} file...')
     with open(DICTIONARY_PATH, 'w') as file:
         pass  # file created
+    # noinspection PyRedeclaration
     DICTIONARY = {}
 with open(WORDS_PATH, 'r') as file:
     WORDS = []
@@ -44,27 +45,29 @@ with open(WORDS_PATH, 'r') as file:
         word = line.strip()
         WORDS.append(word)
 
-while True:
-    MODE=str(input('Select mode. Type 1 to encrypt, type 2 to decrypt: '))
-    if MODE == "1": #encrypt
-        TEXT_ENCRYPTED = ""
-        for word in PLAINTEXT.split():
-            if word in DICTIONARY.keys(): #.keys()
-                ENCRYPTED_WORD = DICTIONARY[word]
-            else:
-                while True:
-                    random_word = WORDS[random.randint(0, len(WORDS)-1)]
-                    if random_word in DICTIONARY:
-                        continue
-                    else:
-                        break
-                ENCRYPTED_WORD = random_word
-            TEXT_ENCRYPTED += ENCRYPTED_WORD
-            TEXT_ENCRYPTED += " "
-            DICTIONARY.update({word: ENCRYPTED_WORD})
-        with open(TEXT_ENCRYPTED_PATH, 'w') as file:
-            file.write(TEXT_ENCRYPTED)
-    elif MODE == "2":
-        pass
-    else:
-        print('Invalid mode. Please 1 to encrypt or 2 to decrypt: ')
+
+def encrypt():
+    text_encrypted = ""
+    for word in PLAINTEXT.split():
+        if word in DICTIONARY.keys():  # .keys()
+            encrypted_word = DICTIONARY[word]
+        else:
+            while True:
+                random_word = WORDS[random.randint(0, len(WORDS) - 1)]
+                if random_word in DICTIONARY:
+                    continue
+                else:
+                    break
+            encrypted_word = random_word
+        text_encrypted += encrypted_word
+        text_encrypted += " "
+        DICTIONARY.update({word: encrypted_word})
+    with open(TEXT_ENCRYPTED_PATH, 'w') as file:
+        file.write(text_encrypted)
+    with open(DICTIONARY_PATH, 'w') as file:
+        file.write(json.dumps(DICTIONARY))
+    print(f'Encrypted text saved in {TEXT_ENCRYPTED_PATH}')
+    input('Press Enter to continue...')
+    sys.exit()
+
+encrypt()
