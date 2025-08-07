@@ -3,7 +3,7 @@ import sys
 import json
 
 PLAINTEXT_PATH = 'plaintext.txt'
-TEXT_ENCRYPTED_PATH = 'encrypted-text.txt'
+TEXT_CODED_PATH = 'coded-text.txt'
 DICTIONARY_PATH = 'dictionary.txt'
 
 if os.path.exists(PLAINTEXT_PATH):
@@ -12,9 +12,9 @@ if os.path.exists(PLAINTEXT_PATH):
     input('Press Enter to continue, otherwise close the program.')
     with open('plaintext.txt', 'r') as file:
         PLAINTEXT = file.read()
-if not os.path.exists(TEXT_ENCRYPTED_PATH):
+if not os.path.exists(TEXT_CODED_PATH):
     print(
-        f'ERROR - no encrypted file detected. Please move a file named {TEXT_ENCRYPTED_PATH} into the same folder as the app and run the program again')
+        f'ERROR - no coded file detected. Please move a file named {TEXT_CODED_PATH} into the same folder as the app and run the program again')
     input('Press Enter to close...')
     sys.exit()
 if os.path.exists(DICTIONARY_PATH):
@@ -22,10 +22,10 @@ if os.path.exists(DICTIONARY_PATH):
         DICTIONARY = json.load(file)
 else:
     print(
-        f'ERROR - no dictionary file detected. Please move a file named {DICTIONARY_PATH} into the same folder as the app and run the program again. You can automatically generate one by encrypting a file using encrypt.py program.')
+        f'ERROR - no dictionary file detected. Please move a file named {DICTIONARY_PATH} into the same folder as the app and run the program again. You can automatically generate one by coding a file using code.py program.')
     input(f'Press Enter to close...')
     sys.exit()
 
 
-def decrypt():
+def decode():
     pass  # to be implemented
