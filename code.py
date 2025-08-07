@@ -4,7 +4,7 @@ import random
 import json
 
 PLAINTEXT_PATH = 'plaintext.txt'
-TEXT_ENCRYPTED_PATH = 'encrypted-text.txt'
+TEXT_CODED_PATH = 'coded-text.txt'
 DICTIONARY_PATH = 'dictionary.txt'
 WORDS_PATH = 'words.txt'
 WORDS = []
@@ -26,8 +26,8 @@ else:
     print(f'No words file detected. Please move a file named {WORDS_PATH} into the same folder as the app and run the program again. This is the file that is recommended: https://github.com/dwyl/english-words/blob/master/words_alpha.txt, but others may work provided that they are in the same format.')
     input('Press Enter to close...')
     sys.exit()
-if os.path.exists(TEXT_ENCRYPTED_PATH):
-    print(f'{TEXT_ENCRYPTED_PATH} file detected. Please make sure that it is okay to overwrite that file. In case you want to preserve that file, please close the program and move that file to another location, otherwise press Enter to continue...')
+if os.path.exists(TEXT_CODED_PATH):
+    print(f'{TEXT_CODED_PATH} file detected. Please make sure that it is okay to overwrite that file. In case you want to preserve that file, please close the program and move that file to another location, otherwise press Enter to continue...')
     input('Press Enter to continue, otherwise close the program.')
 if os.path.exists(DICTIONARY_PATH):
     with open(DICTIONARY_PATH, 'r') as file:
@@ -46,11 +46,11 @@ with open(WORDS_PATH, 'r') as file:
         WORDS.append(word)
 
 
-def encrypt():
-    text_encrypted = ""
+def code():
+    text_coded = ""
     for word in PLAINTEXT.split():
         if word in DICTIONARY.keys():  # .keys()
-            encrypted_word = DICTIONARY[word]
+            coded_word = DICTIONARY[word]
         else:
             while True:
                 random_word = WORDS[random.randint(0, len(WORDS) - 1)]
@@ -58,16 +58,16 @@ def encrypt():
                     continue
                 else:
                     break
-            encrypted_word = random_word
-        text_encrypted += encrypted_word
-        text_encrypted += " "
-        DICTIONARY.update({word: encrypted_word})
-    with open(TEXT_ENCRYPTED_PATH, 'w') as file:
-        file.write(text_encrypted)
+            coded_word = random_word
+        text_coded += coded_word
+        text_coded += " "
+        DICTIONARY.update({word: coded_word})
+    with open(TEXT_CODED_PATH, 'w') as file:
+        file.write(text_coded)
     with open(DICTIONARY_PATH, 'w') as file:
         file.write(json.dumps(DICTIONARY))
-    print(f'Encrypted text saved in {TEXT_ENCRYPTED_PATH}')
+    print(f'Coded text saved in {TEXT_CODED_PATH}')
     input('Press Enter to continue...')
     sys.exit()
 
-encrypt()
+code()
