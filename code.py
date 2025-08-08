@@ -59,7 +59,7 @@ def code(PLAINTEXT, DICTIONARY=None, WORDS=None, DO_PRINT=False, DO_SAVE=False):
         DICTIONARY = {}
     if WORDS is None:
         WORDS = read_words(DO_PRINT)
-    coded_text = ''
+    coded_words = []
     for word in PLAINTEXT.split():
         if word in DICTIONARY.keys():  # .keys()
             coded_word = DICTIONARY[word]
@@ -71,9 +71,9 @@ def code(PLAINTEXT, DICTIONARY=None, WORDS=None, DO_PRINT=False, DO_SAVE=False):
                 else:
                     break
             coded_word = random_word
-        coded_text += coded_word
-        coded_text += " "
         DICTIONARY.update({word: coded_word})
+        coded_words.append(coded_word)
+    coded_text = ' '.join(coded_words)
     if DO_SAVE:
         with open(CODED_TEXT_PATH, 'w', encoding='utf-8') as file:
             file.write(coded_text)
