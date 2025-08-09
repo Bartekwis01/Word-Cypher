@@ -82,7 +82,7 @@ mechanisms.
 ### Coding - code.py
 
 The program loops through each word and checks if it is already present in the dictionary, if so the corresponding word
-is added to the list of words, if it isn't then the program randomly selects a word from the words.txt file that is not
+is added to the list of words, if it isn't then the program randomly selects a word from the words.json file that is not
 present in the dictionary and uses that as the coded word that's added to the list of words. At the end it joins each
 word with a space and returns the result.
 
