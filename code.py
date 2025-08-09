@@ -5,7 +5,7 @@ import json
 
 PLAINTEXT_PATH = 'plaintext.txt'
 CODED_TEXT_PATH = 'coded-text.txt'
-DICTIONARY_PATH = 'dictionary.txt'
+DICTIONARY_PATH = 'dictionary.json'
 WORDS_PATH = 'words.txt'
 WORDS = []
 
@@ -78,7 +78,7 @@ def code(PLAINTEXT, DICTIONARY=None, WORDS=None, DO_PRINT=False, DO_SAVE=False):
         with open(CODED_TEXT_PATH, 'w', encoding='utf-8') as file:
             file.write(coded_text)
         with open(DICTIONARY_PATH, 'w', encoding='utf-8') as file:
-            file.write(json.dumps(DICTIONARY))
+            json.dump(DICTIONARY, file, ensure_ascii=False)
     if DO_PRINT and DO_SAVE:
         print(f'Coded text saved in {CODED_TEXT_PATH}')
         input('Press Enter to continue...')

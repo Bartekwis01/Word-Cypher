@@ -4,7 +4,7 @@ import json
 
 DECODED_TEXT_PATH = 'decoded-text.txt'
 CODED_TEXT_PATH = 'coded-text.txt'
-DICTIONARY_PATH = 'dictionary.txt'
+DICTIONARY_PATH = 'dictionary.json'
 
 
 def manual_run():
