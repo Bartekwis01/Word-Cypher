@@ -6,7 +6,7 @@ import json
 PLAINTEXT_PATH = 'plaintext.txt'
 CODED_TEXT_PATH = 'coded-text.txt'
 DICTIONARY_PATH = 'dictionary.json'
-WORDS_PATH = 'words.txt'
+WORDS_PATH = 'words.json'
 WORDS = []
 
 
@@ -39,9 +39,7 @@ def manual_run(DO_PRINT, DO_SAVE):
 def read_words(DO_PRINT):
     if os.path.exists(WORDS_PATH):
         with open(WORDS_PATH, 'r', encoding='utf-8') as file:
-            for line in file:
-                word = line.strip()
-                WORDS.append(word)
+            WORDS = list(json.load(file).keys())
         return WORDS
     else:
         if DO_PRINT:
