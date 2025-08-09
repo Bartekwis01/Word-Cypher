@@ -1,0 +1,1 @@
+- Scramble the dictionary after coding (add a SCRAMBLE on/off flag)
