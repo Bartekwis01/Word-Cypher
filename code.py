@@ -52,7 +52,7 @@ def read_words(DO_PRINT):
         sys.exit(2)
 
 
-def code(PLAINTEXT, DICTIONARY=None, WORDS=None, DO_PRINT=False, DO_SAVE=False):
+def code(PLAINTEXT, DICTIONARY=None, WORDS=None, DO_PRINT=False, DO_SAVE=False, DO_SHUFFLE=True):
     if DICTIONARY is None:
         DICTIONARY = {}
     if WORDS is None:
@@ -75,8 +75,13 @@ def code(PLAINTEXT, DICTIONARY=None, WORDS=None, DO_PRINT=False, DO_SAVE=False):
     if DO_SAVE:
         with open(CODED_TEXT_PATH, 'w', encoding='utf-8') as file:
             file.write(coded_text)
-        with open(DICTIONARY_PATH, 'w', encoding='utf-8') as file:
-            json.dump(DICTIONARY, file, ensure_ascii=False)
+        if DO_SHUFFLE:
+            DICTIONARY_shuffled = dict(random.sample(list(DICTIONARY.items()), len(DICTIONARY)))
+            with open(DICTIONARY_PATH, 'w', encoding='utf-8') as file:
+                json.dump(DICTIONARY_shuffled, file, ensure_ascii=False)
+        else:
+            with open(DICTIONARY_PATH, 'w', encoding='utf-8') as file:
+                json.dump(DICTIONARY, file, ensure_ascii=False)
     if DO_PRINT and DO_SAVE:
         print(f'Coded text saved in {CODED_TEXT_PATH}')
         input('Press Enter to continue...')
