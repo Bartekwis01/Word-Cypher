@@ -29,7 +29,7 @@ Using the functions is quite straightforward. First you should import code and/o
 
 #### PARAMETERS
 
-The `code()` function only needs `PLAINTEXT` parameter, but you can provide four more;
+The `code()` function only needs `PLAINTEXT` parameter, but you can provide five more;
 
 `PLAINTEXT` - Accepts a string that needs to be coded.
 
@@ -41,9 +41,15 @@ exit with code 2 if it doesn't find it. Accepts any string with one word per lin
 
 `DO_PRINT` - By default the program will not print anything to console, but it can be changed by setting this to `True`
 
-`DO_SAVE` - By default the program will only output coded text and the dictionary, but when this setting is set to
+`DO_SAVE` - By default the program will only output coded text and the dictionary to the console, but when this setting
+is set to
 `True` the program will additionally create files named *coded-text.txt* and *dictionary.json* with the corresponding
 values in the working directory of the program.
+
+`DO_SHUFFLE` - By default the program will shuffle the dictionary before outputting it, but when this setting is set to
+`False` it will not do that
+(WARNING: Disabling this feature will cause the coded/uncoded words appear in the dictionary in the order they were
+used!)
 
 #### OUTPUT
 
